@@ -17,6 +17,7 @@ repositories {
 val vertxVersion = "4.4.6"
 val junitJupiterVersion = "5.10.0"
 val scramClientVersion = "2.1"
+val log4jVersion = "2.20.0"
 
 val mainVerticleName = "one.zub.exchange.service.MainVerticle"
 val launcherClassName = "io.vertx.core.Launcher"
@@ -30,10 +31,13 @@ application {
 
 dependencies {
     implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
+    implementation(platform("org.apache.logging.log4j:log4j-bom:$log4jVersion"))
     implementation("io.vertx:vertx-web-validation")
     implementation("io.vertx:vertx-web")
     implementation("io.vertx:vertx-pg-client")
     implementation("com.ongres.scram:client:$scramClientVersion")
+    implementation("org.apache.logging.log4j:log4j-api")
+    runtimeOnly("org.apache.logging.log4j:log4j-core")
     testImplementation("io.vertx:vertx-junit5")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
